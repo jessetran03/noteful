@@ -17,7 +17,11 @@ class App extends Component {
     folders: [],
   };
 
-  componentDidMount() {
+componentDidMount() {
+  this.getData()
+}
+
+  getData = () => {
     Promise.all([
       fetch(`${config.API_ENDPOINT}/notes`),
       fetch(`${config.API_ENDPOINT}/folders`)
@@ -126,6 +130,7 @@ class App extends Component {
       addFolder: this.handleAddFolder,
       addNote: this.handleAddNote,
       deleteNote: this.handleDeleteNote,
+      getData: this.getData,
     }
     return (
       <ApiContext.Provider value={value}>
